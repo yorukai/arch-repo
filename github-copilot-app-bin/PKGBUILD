@@ -1,0 +1,28 @@
+# Maintainer: Dennis Rumpf <33402703+yorukai@users.noreply.github.com>
+
+_pkgname=github-copilot-app
+
+pkgname="${_pkgname}-bin"
+pkgver=1.1.14
+pkgrel=1
+pkgdesc="GitHub Copilot Desktop App"
+arch=('x86_64')
+url="https://github.com/github/app"
+license=('LicenseRef-proprietary')
+depends=('webkit2gtk-4.1' 'gtk3')
+optdepends=(
+    'libayatana-appindicator: system tray icon support'
+    'git: required for repository operations from the app'
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+options=('!strip' '!emptydirs')
+
+_deb="${pkgname}-${pkgver}-x64.deb"
+source_x86_64=("${pkgname}-${pkgver}-x64.deb::${url}/releases/download/v${pkgver}/GitHub-Copilot-linux-x64.deb")
+sha256sums_x86_64=('d2ac25b55363278c7e4b50536676da827e33623123317dcc5e7e956f87e002d0')
+
+package() {
+    bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}" data.tar.zst
+    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
+}

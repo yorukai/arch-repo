@@ -1,0 +1,31 @@
+# Build artifacts
+*.pkg.tar
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.pkg.tar.lrz
+
+# makepkg
+src/
+pkg/
+
+# Repository database / metadata
+*.db
+*.db.tar.gz
+*.db.tar.zst
+*.db.tar.xz
+*.files
+*.files.tar.gz
+*.files.tar.zst
+*.files.tar.xz
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
